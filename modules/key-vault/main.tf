@@ -40,7 +40,8 @@ resource "azurerm_key_vault_access_policy" "client" {
     "Set",
     "Get",
     "List",
-    "Delete"
+    "Delete",
+    "Purge",
   ]
 }
 

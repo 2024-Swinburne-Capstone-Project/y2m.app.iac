@@ -1,0 +1,28 @@
+name: GitOps
+
+on:
+  push:
+    branches:
+      - 'env-*'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-22.04
+    outputs:
+      application_name: ${{ steps.infrastructure-deployment.outputs.application_name }}
+      application_url: ${{ steps.infrastructure-deployment.outputs.application_url }}
+      resource_group: ${{ steps.infrastructure-deployment.outputs.resource_group }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply Terraform configuration
+        id: infrastructure-deployment
+        uses: ./.github/actions/apply-terraform
+        with:
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+          tf_storage_account: ${{ secrets.TF_STORAGE_ACCOUNT }}
+          container_registry_name: ${{ secrets.CONTAINER_REGISTRY_NAME }}
+          container_registry_username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+          container_registry_password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+          auth0_issuer_base_url: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
+          auth0_ci_client_id: ${{ secrets.AUTH0_CI_CLIENT_ID }}
+          auth0_ci_client_secret: ${{ secrets.AUTH0_CI_CLIENT_SECRET }}

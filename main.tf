@@ -43,11 +43,15 @@ resource "azurerm_resource_group" "main" {
 }
 
 module "application" {
-  source           = "./modules/app-service"
-  resource_group   = azurerm_resource_group.main.name
-  application_name = var.application_name
-  environment      = local.environment
-  location         = var.location
+  source                      = "./modules/app-service"
+  resource_group              = azurerm_resource_group.main.name
+  application_name            = var.application_name
+  environment                 = local.environment
+  location                    = var.location
+  container_registry_name     = var.container_registry_name
+  container_registry_username = var.container_registry_username
+  container_registry_password = var.container_registry_password
+  container_tag               = var.container_tag
 
   database_url      = module.database.database_url
   database_username = "@Microsoft.KeyVault(SecretUri=${module.key-vault.vault_uri}secrets/database-username)"
