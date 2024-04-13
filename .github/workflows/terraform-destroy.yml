@@ -1,14 +1,11 @@
 name: Destroy Resources on Branch Deletion
 
-on:
-  push:
-    branches:
-      - 'env-*'
-
+on: delete
 jobs:
-
-  destroy-resources:
-    if: ${{ !github.event.after }}  # Only run if the branch was deleted
+  destroy:
+    if: |
+      github.event.ref_type =='branch' && 
+      startswith(github.event.ref, 'env-')
     runs-on: ubuntu-22.04
 
     steps:
