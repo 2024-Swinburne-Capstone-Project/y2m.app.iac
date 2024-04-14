@@ -19,7 +19,7 @@ variable "environment" {
 variable "location" {
   type        = string
   description = "The Azure region where all resources in this example should be created"
-  default     = "australiaeast"
+  default     = "australiasoutheast"
 }
 
 variable "auth0_issuer_base_url" {
