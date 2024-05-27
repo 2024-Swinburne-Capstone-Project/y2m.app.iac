@@ -1,6 +1,7 @@
 output "database_url" {
-  value       = "${azurerm_postgresql_flexible_server.database.fqdn}:5432/${azurerm_postgresql_flexible_server_database.database.name}"
-  description = "The PostgreSQL server URL."
+  value       = "postgres://${var.administrator_login}:${random_password.password.result}@${azurerm_postgresql_flexible_server.database.fqdn}:5432/${azurerm_postgresql_flexible_server_database.database.name}"
+  description = "The PostgreSQL server URL with password."
+  sensitive   = true
 }
 
 output "database_username" {
