@@ -44,7 +44,7 @@ resource "azurerm_key_vault_access_policy" "client" {
 resource "azurerm_key_vault_access_policy" "owners" {
   key_vault_id = azurerm_key_vault.application.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+  object_id    = "9be3f6f6-81d4-438d-bc0d-83d8955175cf"
   secret_permissions = [
     "Get",
     "List",
