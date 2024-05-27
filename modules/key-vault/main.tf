@@ -54,7 +54,6 @@ resource "azurerm_key_vault_access_policy" "account_owners_keyvault_access" {
   object_id    = azuread_group.account_owners.object_id
 
   key_permissions = [
-    "Set",
     "Get",
     "List",
     "Delete",
@@ -62,7 +61,6 @@ resource "azurerm_key_vault_access_policy" "account_owners_keyvault_access" {
   ]
 
   secret_permissions = [
-    "Set",
     "Get",
     "List",
     "Delete",
@@ -70,7 +68,6 @@ resource "azurerm_key_vault_access_policy" "account_owners_keyvault_access" {
   ]
 
   certificate_permissions = [
-    "Set",
     "Get",
     "List",
     "Delete",
