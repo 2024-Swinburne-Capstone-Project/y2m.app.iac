@@ -41,37 +41,13 @@ resource "azurerm_key_vault_access_policy" "client" {
   ]
 }
 
-# Create Azure AD group for account owners
-resource "azuread_group" "account_owners" {
-  display_name     = "Account Owners"
-  security_enabled = true
-}
-
-# Assign Key Vault Reader role to the Account Owners group
-resource "azurerm_key_vault_access_policy" "account_owners_keyvault_access" {
+resource "azurerm_key_vault_access_policy" "owners" {
   key_vault_id = azurerm_key_vault.application.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = azuread_group.account_owners.object_id
-
-  key_permissions = [
-    "Get",
-    "List",
-    "Delete",
-    "Purge",
-  ]
-
+  object_id    = "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
   secret_permissions = [
     "Get",
     "List",
-    "Delete",
-    "Purge",
-  ]
-
-  certificate_permissions = [
-    "Get",
-    "List",
-    "Delete",
-    "Purge",
   ]
 }
 
