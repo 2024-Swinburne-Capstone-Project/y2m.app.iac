@@ -16,9 +16,9 @@ provider "auth0" {
 resource "auth0_client" "auth_client" {
   name                = "${var.application_name}-${var.environment}"
   app_type            = "regular_web"
-  callbacks           = ["${var.application_url}/api/auth/callback"]
-  allowed_origins     = [var.application_url]
-  allowed_logout_urls = [var.application_url]
+  callbacks           = ["${var.application_url}/api/auth/callback", "http://localhost:3000/api/auth/callback"]
+  allowed_origins     = [var.application_url, "http://localhost:3000"]
+  allowed_logout_urls = [var.application_url, "http://localhost:3000"]
   oidc_conformant     = true
 
   jwt_configuration {
