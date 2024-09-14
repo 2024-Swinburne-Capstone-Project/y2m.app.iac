@@ -62,6 +62,8 @@ module "application" {
   auth0_client_id       = "@Microsoft.KeyVault(SecretUri=${module.key-vault.vault_uri}secrets/auth0-client-id)"
   auth0_client_secret   = "@Microsoft.KeyVault(SecretUri=${module.key-vault.vault_uri}secrets/auth0-client-secret)"
 
+  azure_storage_connection_string = module.storage_account.azure_storage_connection_string
+
   vault_id = module.key-vault.vault_id
 }
 
