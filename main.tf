@@ -99,3 +99,11 @@ module "auth0" {
   auth0_client_id     = var.auth0_ci_client_id
   auth0_client_secret = var.auth0_ci_client_secret
 }
+
+module "storage_account" {
+  source           = "./modules/storage-account"
+  resource_group   = azurerm_resource_group.main.name
+  application_name = var.application_name
+  environment      = local.environment
+  location         = var.location
+}

@@ -50,7 +50,7 @@ resource "azurerm_linux_web_app" "application" {
   site_config {
     application_stack {
       docker_image     = "${var.container_registry_name}.azurecr.io/${var.application_name}/${var.application_name}"
-      docker_image_tag = "${var.container_tag}"
+      docker_image_tag = var.container_tag
     }
     always_on  = false
     ftps_state = "FtpsOnly"
@@ -77,6 +77,8 @@ resource "azurerm_linux_web_app" "application" {
     "AUTH0_BASE_URL"        = "https://app-${var.application_name}-${var.environment}.azurewebsites.net"
     "AUTH0_ISSUER_BASE_URL" = var.auth0_issuer_base_url
     "AUTH0_SECRET"          = var.auth0_secret
+
+    "AZURE_STORAGE_CONNECTION_STRING" = var.azure_storage_connection_string
   }
 }
 

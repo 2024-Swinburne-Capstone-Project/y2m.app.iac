@@ -34,7 +34,7 @@ variable "auth0_ci_client_id" {
 
 variable "auth0_ci_client_secret" {
   type        = string
-  description = "The Auth0 CI client secret"  
+  description = "The Auth0 CI client secret"
 }
 
 variable "container_registry_name" {
@@ -55,5 +55,5 @@ variable "container_registry_password" {
 variable "container_tag" {
   type        = string
   description = "The tag of the container"
-  default = "latest"
+  default     = "latest"
 }

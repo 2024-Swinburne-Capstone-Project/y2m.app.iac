@@ -16,14 +16,14 @@ resource "azurecaf_name" "key_vault" {
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "application" {
-  name                = azurecaf_name.key_vault.result
-  resource_group_name = var.resource_group
-  location            = var.location
-  tenant_id           = data.azurerm_client_config.current.tenant_id
+  name                       = azurecaf_name.key_vault.result
+  resource_group_name        = var.resource_group
+  location                   = var.location
+  tenant_id                  = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days = 90
   sku_name                   = "standard"
   tags = {
-    "environment"     = var.environment
+    "environment"      = var.environment
     "application-name" = var.application_name
   }
 }

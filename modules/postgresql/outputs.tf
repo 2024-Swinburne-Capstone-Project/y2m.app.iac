@@ -5,7 +5,7 @@ output "database_url" {
 }
 
 output "database_username" {
-  value       = "${var.administrator_login}"
+  value       = var.administrator_login
   description = "The PostgreSQL server user name."
 }
 

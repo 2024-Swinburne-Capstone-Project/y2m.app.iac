@@ -77,3 +77,8 @@ variable "container_tag" {
   type        = string
   description = "The tag of the container"
 }
+
+variable "azure_storage_connection_string" {
+  type        = string
+  description = "The connection string to the Azure Storage account"
+}
