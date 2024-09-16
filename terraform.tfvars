@@ -1,1 +1,1 @@
-container_tag = "43d4f27160c26767428e82b7ccb6e59af1340651"
+container_tag = "58c60acbfd2ac50d18ed4aa12ae99afe486e2566"
